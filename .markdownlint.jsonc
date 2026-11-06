@@ -1,0 +1,6 @@
+{
+  // Long lines are fine in prose and tables.
+  "MD013": false,
+  // Repeated sub-headings (e.g. "Why") under different sections are fine.
+  "MD024": { "siblings_only": true }
+}
