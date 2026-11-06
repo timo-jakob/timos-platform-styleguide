@@ -54,3 +54,40 @@ test("every --platform- name in the docs is a styleguide token or a theme token"
   }
   assert.deepEqual(unknown, []);
 });
+
+/** The colour-role table in STYLEGUIDE.md as rows of [role, shell cell, widget cell]. */
+function colourRows() {
+  return read("STYLEGUIDE.md")
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.startsWith("| ") && line.includes("`--"))
+    .map((line) =>
+      line
+        .split("|")
+        .slice(1, -1)
+        .map((cell) => cell.trim()),
+    );
+}
+
+test("the colour table maps tokens by their value: card surface vs muted container", () => {
+  const roleOf = (token) =>
+    colourRows().find((row) => row.slice(1).some((cell) => cell.includes(`\`${token}\``)))?.[0];
+  // --tc-color-surface is white like the shell's background; --tc-color-surface-muted is the shell's tinted surface.
+  assert.equal(roleOf("--tc-color-surface"), "surface");
+  assert.equal(roleOf("--platform-color-background"), "surface");
+  assert.equal(roleOf("--tc-color-surface-muted"), "surface-container");
+  assert.equal(roleOf("--platform-color-surface"), "surface-container");
+});
+
+test("STYLEGUIDE.md describes the shell's --tc-* defaults as they are", () => {
+  const text = read("STYLEGUIDE.md");
+  assert.doesNotMatch(text, /does not yet translate/);
+  assert.match(text, /declares its own `--tc-color-\*` defaults/);
+});
+
+test("README tells consumers to fetch only the styleguide submodule", () => {
+  const text = read("README.md");
+  assert.doesNotMatch(text, /check it out with `submodules: true`/);
+  assert.match(text, /Don't use `submodules: true`/);
+  assert.match(text, /git submodule update --init --depth 1 styleguide/);
+});

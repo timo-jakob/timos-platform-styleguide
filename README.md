@@ -32,9 +32,18 @@ git -C styleguide checkout v0.1.0
 git add .gitmodules styleguide
 ```
 
-Workflows that build the UI check it out with `submodules: true` on
-`actions/checkout`. Import the tokens before the repository's own theme
-tokens, so a theme can still override the defaults:
+Workflows that build the UI fetch this submodule, and only this one, right
+after `actions/checkout`:
+
+```yaml
+- name: fetch the styleguide submodule
+  run: git submodule update --init --depth 1 styleguide
+```
+
+Don't use `submodules: true` on `actions/checkout`: it fetches every
+submodule, and a private one (such as `platform-docs`) fails without
+credentials. Import the tokens before the repository's own theme tokens, so a
+theme can still override the defaults:
 
 ```ts
 import "../styleguide/tokens/tokens.css";
