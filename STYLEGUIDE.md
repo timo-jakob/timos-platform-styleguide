@@ -62,9 +62,8 @@ covers the component-level details.
   |---|---|---|
   | primary | `--platform-color-primary` | `--tc-color-primary` |
   | on-primary | `--platform-color-primary-contrast` | — |
-  | surface | `--platform-color-background` | `--tc-color-bg` |
-  | surface-container | `--platform-color-surface` | `--tc-color-surface` |
-  | surface-container-low | — | `--tc-color-surface-muted` |
+  | surface | `--platform-color-background` | `--tc-color-bg`, `--tc-color-surface` |
+  | surface-container | `--platform-color-surface` | `--tc-color-surface-muted` |
   | on-surface | `--platform-color-text` | `--tc-color-text` |
   | on-surface (headings) | `--platform-color-text-heading` | `--tc-color-heading` |
   | on-surface-variant | `--platform-color-text-muted` | — |
@@ -78,8 +77,9 @@ covers the component-level details.
   pair `--tc-color-cta` / `--tc-color-on-cta`, and the severity
   (`--tc-color-severity-*`) and status (`--tc-color-status-*`) colours.
   Severity and status always carry a label or symbol besides their colour.
-  The shell does not yet translate its `--platform-color-*` tokens into the
-  Trustcenter's `--tc-color-*` names; that mapping comes with the theme work.
+  The shell declares its own `--tc-color-*` defaults next to its
+  `--platform-color-*` tokens rather than deriving one from the other; deriving
+  both from the Material 3 roles comes with the theme work.
 - **Font family comes from the theme.** The Material 3
   [type scale](https://m3.material.io/styles/typography) applies (sizes, line
   heights, weights: `--platform-type-<role>-<size>-*`); the family is the

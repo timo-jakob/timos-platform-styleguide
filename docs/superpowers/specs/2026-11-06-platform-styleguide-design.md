@@ -67,7 +67,7 @@ write down only what is ours.
 ## Repository
 
 - Name: `timos-platform-styleguide` (GitHub `timo-jakob/`, **public** — product owner decision: it holds no brand values or secrets, and consumers build from it, so CI fetches it without credentials). Name is Claude's call.
-  Consumer workflows that build check out with `submodules: true`.
+  Consumer workflows that build fetch only this submodule (`git submodule update --init --depth 1 styleguide`).
 - Consumers (submodule path `styleguide/`): dashboard-frontend, widget-gallery,
   trustcenter-frontend, whitelabel-center (admin UI). *Claude's guess at the
   list, confirmed by the product owner.*
