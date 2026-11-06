@@ -1,0 +1,75 @@
+/*
+ * Platform design tokens — the non-colour set (spacing, corner radius, type
+ * scale, widget layout). Mirror of tokens.json: edit both together;
+ * tests/tokens.test.mjs enforces equality. Radius values are defaults a tenant
+ * theme may override. Colours and font families come from the theme.
+ */
+
+:root {
+  /* Spacing: 4px baseline, Material 3 steps. */
+  --platform-space-xs: 4px;
+  --platform-space-sm: 8px;
+  --platform-space-sm-md: 12px;
+  --platform-space-md: 16px;
+  --platform-space-lg: 24px;
+  --platform-space-xl: 32px;
+  --platform-space-2xl: 40px;
+  --platform-space-3xl: 48px;
+  --platform-space-4xl: 64px;
+
+  /* Corner radius: defaults a tenant theme may override. */
+  --platform-radius-sm: 4px;
+  --platform-radius-md: 6px;
+  --platform-radius-lg: 8px;
+  --platform-radius-pill: 1000px;
+
+  /* Type scale: Material 3 roles. The font family comes from the theme. */
+  --platform-type-display-large-size: 57px;
+  --platform-type-display-large-line-height: 64px;
+  --platform-type-display-large-weight: 400;
+  --platform-type-display-medium-size: 45px;
+  --platform-type-display-medium-line-height: 52px;
+  --platform-type-display-medium-weight: 400;
+  --platform-type-display-small-size: 36px;
+  --platform-type-display-small-line-height: 44px;
+  --platform-type-display-small-weight: 400;
+  --platform-type-headline-large-size: 32px;
+  --platform-type-headline-large-line-height: 40px;
+  --platform-type-headline-large-weight: 400;
+  --platform-type-headline-medium-size: 28px;
+  --platform-type-headline-medium-line-height: 36px;
+  --platform-type-headline-medium-weight: 400;
+  --platform-type-headline-small-size: 24px;
+  --platform-type-headline-small-line-height: 32px;
+  --platform-type-headline-small-weight: 400;
+  --platform-type-title-large-size: 22px;
+  --platform-type-title-large-line-height: 28px;
+  --platform-type-title-large-weight: 400;
+  --platform-type-title-medium-size: 16px;
+  --platform-type-title-medium-line-height: 24px;
+  --platform-type-title-medium-weight: 500;
+  --platform-type-title-small-size: 14px;
+  --platform-type-title-small-line-height: 20px;
+  --platform-type-title-small-weight: 500;
+  --platform-type-body-large-size: 16px;
+  --platform-type-body-large-line-height: 24px;
+  --platform-type-body-large-weight: 400;
+  --platform-type-body-medium-size: 14px;
+  --platform-type-body-medium-line-height: 20px;
+  --platform-type-body-medium-weight: 400;
+  --platform-type-body-small-size: 12px;
+  --platform-type-body-small-line-height: 16px;
+  --platform-type-body-small-weight: 400;
+  --platform-type-label-large-size: 14px;
+  --platform-type-label-large-line-height: 20px;
+  --platform-type-label-large-weight: 500;
+  --platform-type-label-medium-size: 12px;
+  --platform-type-label-medium-line-height: 16px;
+  --platform-type-label-medium-weight: 500;
+  --platform-type-label-small-size: 11px;
+  --platform-type-label-small-line-height: 16px;
+  --platform-type-label-small-weight: 500;
+
+  /* Widget layout: gap between regions; the shell's card owns the outer padding. */
+  --platform-widget-gap: 16px;
+}
