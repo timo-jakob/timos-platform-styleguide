@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readdirSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import { test } from "node:test";
 import { jsonTokens, read } from "./lib.mjs";
 
@@ -14,11 +14,13 @@ const SECTIONS = [
   "Writing",
 ];
 
+const PATTERNS = new URL("../patterns/", import.meta.url);
+
 // The styleguide's normative documents (not the design history under docs/).
 const documents = () => [
   "README.md",
   "STYLEGUIDE.md",
-  ...readdirSync(new URL("../patterns/", import.meta.url), { withFileTypes: true })
+  ...(existsSync(PATTERNS) ? readdirSync(PATTERNS, { withFileTypes: true }) : [])
     .filter((entry) => entry.isFile() && entry.name.endsWith(".md"))
     .map((entry) => `patterns/${entry.name}`),
 ];
